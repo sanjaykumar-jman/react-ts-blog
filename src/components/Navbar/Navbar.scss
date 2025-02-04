@@ -1,0 +1,35 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem;
+    background-color: #424242;
+    color: #fff;
+    border-radius: 5px;
+    position: fixed;
+    width: 94%;
+    img {
+        height: 50px;
+    }
+
+    ul {
+        list-style: none;
+        display: flex;
+        gap: 1.5rem;
+
+        li {
+            display: inline;
+
+            a, a:link {
+                color: #fff;
+                text-decoration: none;
+                font-weight: bold;
+                transition: color 0.3s ease;
+                &:hover {
+                    color: #ff6347;
+                }
+            }
+            a:visited{}
+        }
+    }
+}
