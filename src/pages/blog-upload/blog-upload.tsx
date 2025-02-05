@@ -2,15 +2,13 @@ import './blog-upload.scss'
 import { useBlogContext } from '../../context/BlogContext';
 import * as types from '../../types/blog';
 import React, { useState } from 'react';
-import Popup from '../../components/Popup/Popup';
-import FadeComponent from '../../components/Popup/FadeComponent';
 import imgFileToBase64 from '../../utils/ImageFileToBase64';
 import generateUID from '../../utils/Uid';
 
 export default function BlogUpload() {
     const {data} = useBlogContext();
     const [blog, setBlog] = React.useState<types.blogTemplate>({uid:0, authName: '', blogTitle: '', desc: '', thumbnail: null, webUrl: '', views: 0});
-    let [uploaded, setUploaded] = useState(false)
+    let [setUploaded] = useState(false)
 
 return (
   <>

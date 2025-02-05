@@ -11,7 +11,7 @@ const openInNewTab = (url: string) => {
 function BlogCard({uid, blogTitle, authName, thumbnail, desc, webUrl, views}: types.blogTemplate) {
     const [imageUrl, setImageUrl] = useState<string>("");
     let [liked, setLiked] = useState<boolean>(false)
-    let {data, setBlogContext} = useBlogContext()
+    let {setBlogContext} = useBlogContext()
 
   useEffect(() => {
     if (thumbnail) {

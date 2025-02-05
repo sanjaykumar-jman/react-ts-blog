@@ -1,6 +1,4 @@
-import React, { useState } from 'react'
-import BlogCard from '../components/BlogCard/BlogCard'
-import { useBlogContext } from '../context/BlogContext'
+import { useState } from 'react'
 import Popup from '../components/Popup/Popup'
 import FadeComponent from '../components/Popup/FadeComponent'
 
