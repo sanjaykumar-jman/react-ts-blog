@@ -1,6 +1,6 @@
 import './BlogCard.scss'
 import * as types from '../../types/blog'
-import React, {useState, useEffect} from 'react'
+import  {useState, useEffect} from 'react'
 import { Heart } from 'lucide-react';
 import { useBlogContext } from '../../context/BlogContext';
 
@@ -46,7 +46,7 @@ function BlogCard({uid, blogTitle, authName, thumbnail, desc, webUrl, views}: ty
                 }
                 return e
             }))}}>
-            Read More
+            Visit Blog
             </div>
             <div className="delete-blog"
             onClick={()=>{
