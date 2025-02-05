@@ -1,7 +1,6 @@
 import './explorer.scss'
 import { useBlogContext } from '../../context/BlogContext'
 import BlogCard from '../../components/BlogCard/BlogCard'
-import * as types from '../../types/blog'
 import { useEffect } from 'react'
 import base64ToFile from '../../utils/Base64toFile'
 
