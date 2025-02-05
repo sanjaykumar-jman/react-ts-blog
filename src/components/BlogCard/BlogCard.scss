@@ -1,0 +1,86 @@
+.blog-card {
+    width: 100%;
+    max-width: 1200px; // Increased width for a wider card
+    margin: 30px auto;
+    padding: 25px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    overflow: hidden;
+
+    &:hover {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    img {
+      width: 100%;
+      height: 450px; // Increased height for a bigger image
+      object-fit: cover;
+      border-radius: 12px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    h2 {
+      font-size: 2.2rem; // Bigger title
+      font-weight: 700;
+      margin: 20px 0;
+      color: #222;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .blog-opers {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+
+    .open-link,
+    .delete-blog {
+      display: inline-block;
+      padding: 12px 18px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    .open-link {
+      color: #fff;
+      background: #007bff;
+
+      &:hover {
+        background: #0056b3;
+      }
+    }
+
+    .delete-blog {
+      color: #fff;
+      background: #dc3545; // Red delete button
+
+      &:hover {
+        background: #b02a37; // Darker red on hover
+      }
+    }
+
+    .titleinfo {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .info {
+            width: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+}

@@ -1,11 +1,16 @@
 import './blog-upload.scss'
 import { useBlogContext } from '../../context/BlogContext';
 import * as types from '../../types/blog';
-import React from 'react';
+import React, { useState } from 'react';
+import Popup from '../../components/Popup/Popup';
+import FadeComponent from '../../components/Popup/FadeComponent';
+import imgFileToBase64 from '../../utils/ImageFileToBase64';
+import generateUID from '../../utils/Uid';
 
 export default function BlogUpload() {
     const {data} = useBlogContext();
-    const [blog, setBlog] = React.useState<types.blogTemplate>({} as types.blogTemplate);
+    const [blog, setBlog] = React.useState<types.blogTemplate>({uid:0, authName: '', blogTitle: '', desc: '', thumbnail: null, webUrl: '', views: 0});
+    let [uploaded, setUploaded] = useState(false)
 
 return (
   <>
@@ -13,21 +18,38 @@ return (
       <form onSubmit={(e: React.FormEvent)=>{
         e.preventDefault();
         data.push(blog);
+        let toLocStor:Object = blog
+
+        imgFileToBase64(blog.thumbnail)
+            .then(base64=>{
+              toLocStor= {...toLocStor, thumbnail: base64}
+            })
+            .catch(e=>{
+              console.log(e);
+              toLocStor= {...toLocStor, thumbnail: ''}              
+            })
+            .finally(()=>{
+              localStorage.setItem(generateUID(), JSON.stringify(toLocStor))
+              setBlog({uid: Date.now(), authName: '', blogTitle: '', desc: '', thumbnail: null, webUrl: '', views:0});
+              setUploaded(true)
+            })
         
       }}>
         <label htmlFor="author">Author Name:</label>
-        <input type="text" id="author" name="author" required 
+        <input type="text" id="author" name="author" 
         value={blog.authName}
-        onChange={e=>{
-            blog.authName = e.target.value;
-        }}/>
+        onChange={(e: React.ChangeEvent<HTMLInputElement>)=>{
+          setBlog({...blog, authName: e.target.value})
+        }}
+        />
 
         <label htmlFor="title">Blog Title:</label>
-        <input type="text" id="title" name="title" required 
+        <input type="text" id="title" name="title" 
         value={blog.blogTitle}
-        onChange={e=>{
-            blog.blogTitle = e.target.value;
-        }}/>
+        onChange={(e: React.ChangeEvent<HTMLInputElement>)=>{
+          setBlog({...blog, blogTitle: e.target.value})
+        }}
+        />
 
         <label htmlFor="thumbnail">Thumbnail:</label>
         <input
@@ -35,25 +57,26 @@ return (
           id="thumbnail"
           name="thumbnail"
           accept="image/*"
-          required
-// value={1}
+          
           onChange={e=>{
-            blog.thumbnail = e.target.files![0];
+            if (e.target.files && e.target.files[0]) {
+              setBlog({...blog, thumbnail: e.target.files[0]});
+            }
           }}
         />
 
         <label htmlFor="website">Website URL:</label>
-        <input type="url" id="website" name="website" 
+        <input type="text" id="website" name="website" 
         value={blog.webUrl}
         onChange={e=>{
-            blog.webUrl = e.target.value
+            setBlog({...blog, webUrl: e.target.value})
         }}/>
 
         <label htmlFor="description">Description:</label>
-        <textarea id="description" name="description" required 
-        value={blog.webUrl}
+        <textarea id="description" name="description" 
+        value={blog.desc}
         onChange={e=>{
-            blog.desc = e.target.value
+            setBlog({...blog, desc: e.target.value})
         }}></textarea>
 
         <button type='submit'>Upload Blog</button>

@@ -6,10 +6,10 @@ return<>
     <nav className='navbar'>
         <img src="src/assets/blog.png" alt="???" />
         <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/explore">Explore</Link></li>
-            <li><Link to="/upload-blog">Upload Blog</Link></li>
-            <li><Link to="/about">About</Link></li>
+            <li><Link to="/" className="nav-link">Home</Link></li>
+            <li><Link to="/explore" className="nav-link">Explore</Link></li>
+            <li><Link to="/upload-blog" className="nav-link">Upload Blog</Link></li>
+            <li><Link to="/about" className="nav-link">About</Link></li>
         </ul>
     </nav>
 </>

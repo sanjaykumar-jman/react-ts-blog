@@ -4,6 +4,7 @@ import Home from "./pages/home/home"
 import Explorer from "./pages/explorer/explorer"
 import BlogUpload from "./pages/blog-upload/blog-upload"
 import { BlogProvider } from "./context/BlogContext"
+import Testing from "./test/test"
 
 let About = () => <h1>About</h1>
 
@@ -16,6 +17,7 @@ function App() {
     <Route path="/explore" element={<Explorer />} />
     <Route path="/upload-blog" element={<BlogUpload />} />
     <Route path="/about" element={<About />} />
+    <Route path='/testing' element={<Testing />} />
   </Routes>
   </BlogProvider>
   </>
