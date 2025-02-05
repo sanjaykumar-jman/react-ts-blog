@@ -8,7 +8,9 @@ import generateUID from '../../utils/Uid';
 export default function BlogUpload() {
     const {data} = useBlogContext();
     const [blog, setBlog] = React.useState<types.blogTemplate>({uid:0, authName: '', blogTitle: '', desc: '', thumbnail: null, webUrl: '', views: 0});
-    let [setUploaded] = useState(false)
+    let [uploaded, setUploaded] = useState(false)
+    console.log(uploaded);
+    
 
 return (
   <>
