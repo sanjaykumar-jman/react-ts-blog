@@ -19,7 +19,16 @@ return (
         e.preventDefault();
         data.push(blog);
         let toLocStor:Object = blog
-
+        fetch('http://localhost:4000/blogs/', {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+              blog_title: blog.blogTitle,
+              blog_author: blog.authName
+          })
+        })
         imgFileToBase64(blog.thumbnail)
             .then(base64=>{
               toLocStor= {...toLocStor, thumbnail: base64}

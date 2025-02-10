@@ -1,4 +1,4 @@
-export type blogTemplate = {
+export interface blogTemplate {
     uid: number
     authName: string,
     blogTitle: string,
@@ -7,7 +7,7 @@ export type blogTemplate = {
     desc : string
     views: number
 }
-export type blogStat = {
+export interface blogStat {
     views: number
 }
 export type blogList = blogTemplate[]
